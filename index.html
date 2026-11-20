@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>اسطوره فوتبال</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{--gold:#f4d06f;--green:#55e0a0;--muted:#b5c9c3;--line:#315b59;--panel:#102b36}
+*{box-sizing:border-box}body{margin:0;padding-bottom:94px;background:radial-gradient(ellipse at 12% 0%,#174d60 0,transparent 34%),radial-gradient(ellipse at 90% 15%,#214c3b 0,transparent 32%),linear-gradient(145deg,#071923,#0b292d 52%,#07151f);color:#f4fff9;font-family:Tahoma,Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;background:linear-gradient(110deg,#071923f5,#12333af5);border-bottom:1px solid var(--line);padding:12px 15px;display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;align-items:center;gap:10px}.crest{width:44px;height:48px;display:grid;place-items:center;background:linear-gradient(145deg,#f8dc86,#a76e20);color:#17291e;clip-path:polygon(8% 0,92% 0,86% 72%,50% 100%,14% 72%);font-size:22px;font-weight:bold;overflow:hidden}.crest img{width:100%;height:100%;object-fit:cover}
+h1{font-size:18px;color:var(--gold);margin:0}.brand small{font-size:11px;color:var(--muted)}
+main{max-width:1050px;margin:auto;padding:13px}.page{display:none;animation:fade .2s}.page.show{display:block}@keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}
+.card{background:linear-gradient(145deg,#153744f2,#0c252ef5);border:1px solid #315b68;border-radius:18px;padding:15px;margin-bottom:12px;box-shadow:0 10px 25px #0003}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:11px}
+h2,h3{color:var(--gold);margin:0 0 12px}h2{font-size:19px}h3{font-size:16px}.muted{color:var(--muted);font-size:12px;line-height:1.8}.stat{font-size:27px;font-weight:bold;margin:8px 0}.row{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin:9px 0}
+button,select,input{font:inherit;border-radius:11px;padding:10px 12px}button{color:white;background:linear-gradient(135deg,#286c53,#174536);border:1px solid #4b9677;cursor:pointer;box-shadow:0 4px 12px #0002}button:active{transform:scale(.98)}button.primary{background:linear-gradient(135deg,#f4d47b,#bd852b);color:#18291f;border:0;font-weight:bold}
+input,select{width:100%;margin:5px 0;background:#0a2119;color:white;border:1px solid #47745e}label{font-size:12px;color:var(--muted)}
+.pill{display:inline-block;border:1px solid #47745e;background:#214b3a;padding:6px 10px;border-radius:30px;font-size:12px;margin:3px}.notice{background:#3d351f;border:1px solid #8e783e;padding:11px;border-radius:12px;color:#ffe8a8;font-size:12px;line-height:1.9;margin:10px 0}
+nav{position:fixed;bottom:0;left:0;right:0;z-index:10;display:flex;justify-content:space-around;gap:3px;padding:7px 4px calc(7px + env(safe-area-inset-bottom));background:#06140ff5;border-top:1px solid #37634f;overflow-x:auto}
+nav button{min-width:65px;flex:1;padding:7px 3px;border:1px solid transparent;background:transparent;box-shadow:none;font-size:10px;color:#a8c3b7;white-space:nowrap}
+nav button .ico{display:block;font-size:18px;margin-bottom:3px}nav button.active{background:linear-gradient(145deg,#f4ce70,#b8832c);color:#18291f;font-weight:bold}
+.pitch{background:repeating-linear-gradient(0deg,#176746 0 48px,#1b714c 48px 96px);border:2px solid #d8e8d7;border-radius:15px;padding:12px 7px}.pitchline{display:flex;justify-content:space-around;gap:4px;margin:9px 0}.player{background:#f3f5e9;color:#173426;border:2px solid #e0c66c;border-radius:9px;padding:6px 2px;text-align:center;font-size:10px;flex:1;max-width:100px;min-width:0}.player b{display:block;font-size:11px}.bench{display:flex;gap:6px;flex-wrap:wrap}
+table{width:100%;border-collapse:collapse;font-size:12px}td,th{padding:9px 5px;border-bottom:1px solid #315b4d;text-align:right}th{color:var(--gold)}
+.teamlogo{display:inline-grid;place-items:center;width:36px;height:40px;color:#fff;font-weight:900;font-size:10px;clip-path:polygon(8% 0,92% 0,86% 72%,50% 100%,14% 72%);margin-left:7px;text-shadow:0 1px 3px #000;vertical-align:middle;box-shadow:0 3px 8px #0005}
+.teamlogo i{font-style:normal;border:1px solid #ffffff99;border-radius:50%;width:25px;height:25px;display:grid;place-items:center;background:#0002}
+.statgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.statbox{background:linear-gradient(145deg,#194353,#102c39);border:1px solid #3d6a77;border-radius:16px;padding:13px;min-height:112px;position:relative;overflow:hidden}
+.statbox h3{font-size:13px;margin:0;color:#b9d8d5}.statbox .stat{font-size:25px;color:#ffe08a;margin:7px 0}
+.pitchline{display:flex;justify-content:center;gap:5px;margin:12px 0}
+.player{cursor:pointer;transition:.15s;min-height:60px}
+.player.selected{outline:3px solid #ffd66c;transform:translateY(-3px);box-shadow:0 0 14px #ffdc76}
+.pitch-label{font-size:10px;color:#e5f4e8;text-align:center;opacity:.85;margin-top:2px}
+.special-card{border:1px solid #d8a94d;background:linear-gradient(130deg,#533d19,#172e39);border-radius:15px;padding:13px}
+.onboard{max-width:560px;margin:24px auto}.logo-preview{width:76px;height:82px;display:grid;place-items:center;background:#204b39;clip-path:polygon(8% 0,92% 0,86% 72%,50% 100%,14% 72%);font-size:30px;margin:10px auto;overflow:hidden}.logo-preview img{width:100%;height:100%;object-fit:cover}.hidden{display:none!important}
+@media(max-width:540px){h1{font-size:16px}.card{padding:12px}.stat{font-size:24px}}
+</style></head>
+<body>
+<header><div class="brand"><div class="crest" id="headCrest">⚽</div><div><h1 id="headTeam">اسطوره فوتبال</h1><small id="headCoach">به باشگاه خوش آمدی</small></div></div><button onclick="toggleMusic()" id="musicBtn">🎵</button></header>
+<main>
+<section id="onboarding" class="onboard"><div class="card">
+<h2 style="text-align:center">🏆 ساخت باشگاه شما</h2><p class="muted" style="text-align:center">برای شروع، نام تیم، نام مربی و لوگوی باشگاهت را وارد کن.</p>
+<label>اسم تیم</label><input id="teamInput" placeholder="مثلاً عقاب‌های تهران">
+<label>اسم مربی</label><input id="coachInput" placeholder="نام مربی">
+<label>لوگوی تیم (تصویر دلخواه)</label><input id="logoInput" type="file" accept="image/*" onchange="previewLogo(event)">
+<div class="logo-preview" id="logoPreview">⚽</div><button class="primary" style="width:100%" onclick="createClub()">ساخت باشگاه و ورود به لیگ</button>
+</div></section>
+<div id="game" class="hidden">
+<section id="home" class="page show">
+<div class="card"><div class="row"><div><span class="pill">🏆 لیگ برتر خلیج فارس</span><h2 id="welcomeTeam">تیم شما</h2><div class="muted" id="welcomeCoach"></div></div><div class="crest" id="homeCrest">⚽</div></div>
+<p>بعد از تلاش‌های سخت و پشت سر گذاشتن مسیر دشوار، بالاخره تیم شما به <b style="color:var(--gold)">لیگ برتر خلیج فارس</b> رسید!</p>
+<p class="muted">اطلاعات باشگاه شما ثبت شد. اکنون در چهار تورنومنت زیر حضور دارید:</p>
+<div class="grid"><span class="pill">🏟️ لیگ برتر خلیج فارس</span><span class="pill">🏆 جام حذفی خلیج فارس</span><span class="pill">🌍 جام باشگاه‌های جهان</span><span class="pill">🌏 جام آسیا</span></div></div>
+<div class="statgrid">
+<div class="statbox"><h3>⚡ قدرت تیم</h3><div class="stat" id="teamPower">۱۰</div><div class="muted">میانگین قدرت ترکیب اصلی</div></div>
+<div class="statbox"><h3>📣 هواداران</h3><div class="stat" id="fans">۰</div><div class="muted">برد +۵۰ | باخت −۲۰</div></div>
+<div class="statbox"><h3>💰 بودجه باشگاه</h3><div class="stat" id="money">۱۰٬۰۰۰ $</div><div class="muted">سرمایه در دسترس</div></div>
+<div class="statbox"><h3>🏟️ درآمد بازی خانگی</h3><div class="stat" id="homeIncome">۲۵۰ $</div><div class="muted">هر ۵۰۰ هوادار، ۵۰ دلار بیشتر</div></div></div>
+<div class="card"><h3>مدیریت باشگاه</h3><div class="row"><button onclick="playHome()">🏟️ دریافت درآمد بازی خانگی</button><button onclick="goToLeague()">🏆 ورود به مسابقات</button></div></div>
+</section>
+<section id="squad" class="page"><div class="card"><div class="row"><h3>ترکیب تیم</h3><label>آرایش<select id="formation" onchange="renderSquad()"></select></label></div><p class="muted">قدرت بازیکنان در کل بازی ۱ تا ۹۹ است؛ بازیکنان اولیه قدرت ۱ تا ۱۰ دارند.</p><div class="pitch" id="pitch"></div>
+<h3>تعویض بازیکن</h3>
+<div class="grid">
+<div><label>بازیکن داخل زمین</label><select id="outPlayer"></select></div>
+<div><label>بازیکن نیمکت</label><select id="inPlayer"></select></div>
+</div>
+<button class="primary" onclick="makeSubstitution()">انجام تعویض</button>
+<h3 style="margin-top:16px">نیمکت (۵ بازیکن)</h3><div id="bench" class="bench"></div>
+<p class="muted">اگر بازیکن در پست نامناسب قرار بگیرد، قدرت مؤثرش نصف و با رنگ قرمز نمایش داده می‌شود.</p></div></section>
+<section id="market" class="page"><div class="grid"><div class="card"><h3>بازار نقل‌وانتقالات</h3><p class="muted">بازیکنان بازار هر ۱۲ ساعت تازه می‌شوند.</p><div id="specialPlayer"></div><div id="marketList"></div></div><div class="card"><h3>فروش بازیکنان خودت</h3><div id="sellList"></div></div></div></section>
+<section id="league" class="page">
+<div class="card"><h3>رقابت‌های باشگاه</h3>
+<div class="grid">
+<button onclick="showTournament('لیگ برتر خلیج فارس')">🏟️ لیگ برتر خلیج فارس</button>
+<button onclick="showTournament('جام حذفی خلیج فارس')">🏆 جام حذفی خلیج فارس</button>
+<button onclick="showTournament('جام باشگاه‌های جهان')">🌍 جام باشگاه‌های جهان</button>
+<button onclick="showTournament('جام آسیا')">🌏 جام آسیا</button>
+</div></div>
+<div class="card"><h3 id="tournamentTitle">لیگ برتر خلیج فارس</h3><div id="leagueDetail"></div><button class="primary" style="width:100%;margin-top:12px" onclick="startMatch(0)">⚽ شروع مسابقه هفته اول</button></div>
+</section>
+<section id="fixtures" class="page"><div class="card"><h3>برنامه روزانه مسابقات</h3>
+<p class="muted">۷ بازی روزانه در بازه ۹ صبح تا ۱۲ شب؛ زمان‌ها به وقت محلی دستگاه هستند.</p>
+<div id="fixtureList"></div></div></section>
+<section id="club" class="page"><div class="grid"><div class="card"><h3>تمرین روزانه</h3><p class="muted">هر روز دقیقاً ۳ بازیکن را انتخاب کن؛ هر بازیکن +۰٫۱ قدرت می‌گیرد.</p><div id="trainingPlayers"></div><button class="primary" onclick="trainSelected()">تمرین ۳ بازیکن انتخاب‌شده</button><p id="trainStatus" class="muted"></p></div><div class="card"><h3>ورزشگاه</h3><p>درآمد پایه بازی خانگی: <b>۲۵۰ دلار</b></p><p>هر ۵۰۰ هوادار: <b>۵۰ دلار بیشتر</b></p><p class="muted">هزینه نگهداری روزانه: ۵۰۰ دلار (نمونه)</p></div></div></section>
+<section id="academy" class="page"><div class="card"><h3>🌱 آکادمی استعدادیابی</h3><p>هزینه درخواست: ۵٬۰۰۰ دلار</p><p>پس از ۱۲ ساعت، دو استعداد زیر ۱۶ سال با قدرت ۱ تا ۲۰ آماده جذب می‌شوند.</p><div id="academyStatus" class="muted">هنوز درخواستی ثبت نشده است.</div><button class="primary" id="academyButton" onclick="academyAction()">ثبت درخواست استعدادیابی</button></div></section>
+<section id="alliance" class="page"><div class="card"><h3>🤝 اتحاد (گپ)</h3><div class="stat">به‌زودی ⏳</div><p class="muted">امکان ساخت اتحاد و گفت‌وگو با مدیران باشگاه‌ها به‌زودی فعال می‌شود.</p></div></section>
+<section id="store" class="page"><div class="card"><h3>فروشگاه</h3><div class="stat">به‌زودی ⏳</div></div></section>
+</div></main>
+<nav id="bottomNav" class="hidden">
+<button class="active" onclick="go('home',this)"><span class="ico">🏠</span>خانه</button><button onclick="go('squad',this)"><span class="ico">👥</span>ترکیب</button><button onclick="go('market',this)"><span class="ico">🔄</span>بازار</button><button onclick="go('league',this)"><span class="ico">🏆</span>لیگ</button><button onclick="go('fixtures',this)"><span class="ico">📅</span>بازی‌ها</button><button onclick="go('club',this)"><span class="ico">🏟️</span>باشگاه</button><button onclick="go('academy',this)"><span class="ico">🌱</span>آکادمی</button><button onclick="go('alliance',this)" ><span class="ico">🤝</span>اتحاد</button><button onclick="go('store',this)"><span class="ico">🛒</span>فروشگاه</button>
+</nav>
+<audio id="music" src="music.mp3" loop></audio>
+<script>
+const formations=['4-3-3','4-4-2','4-2-3-1','4-1-4-1','4-3-2-1','4-5-1','3-4-3','3-5-2','3-4-2-1','3-4-1-2','3-6-1','5-3-2','5-4-1','5-2-3','4-2-2-2','4-3-1-2','4-1-3-2','3-3-3-1','2-3-5','2-4-4'];
+const roster=['آرمان','پارسا','سامان','امیر','کیان','ماهان','بردیا','رادین','آریا','اشکان','یاسین','نوید','طاها','سینا','مهراد','عرفان'];
+let players=roster.map((n,i)=>({name:n,pos:['GK','DEF','DEF','DEF','DEF','MID','MID','MID','FWD','FWD','FWD','GK','DEF','MID','FWD','DEF'][i],power:1+i%10,age:19+i%8}));
+let money=10000,fans=0,teamName='',coachName='',logoData='',lastTrain=0;
+let academyRequest=0;
+let gameReady=false, saveTimer=null, telegramInitData=window.Telegram?.WebApp?.initData||'';
+let market=Array.from({length:10},(_,i)=>({name:['لوکا','مارکو','دنیل','آندره','رافائل','نوآ','ماتیاس','الیاس','ویکتور','گابریل'][i],pos:['GK','DEF','MID','FWD'][i%4],power:[5,12,18,25,33,41,52,67,82,95][i],price:[5000,12000,18000,25000,33000,41000,52000,67000,82000,100000][i]}));
+function previewLogo(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{logoData=r.result;document.getElementById('logoPreview').innerHTML='<img src="'+logoData+'">'};r.readAsDataURL(f)}
+function goToLeague(){const b=document.querySelector('nav button:nth-child(4)');go('league',b)}
+async function createClub(){teamName=document.getElementById('teamInput').value.trim();coachName=document.getElementById('coachInput').value.trim();if(!teamName||!coachName){alert('اسم تیم و اسم مربی را وارد کن.');return}document.getElementById('onboarding').classList.add('hidden');document.getElementById('game').classList.remove('hidden');document.getElementById('bottomNav').classList.remove('hidden');document.getElementById('headTeam').textContent=teamName;document.getElementById('headCoach').textContent='مربی: '+coachName;document.getElementById('welcomeTeam').textContent=teamName;document.getElementById('welcomeCoach').textContent='سرمربی: '+coachName;if(logoData){document.getElementById('headCrest').innerHTML='<img src="'+logoData+'">';document.getElementById('homeCrest').innerHTML='<img src="'+logoData+'">'}gameReady=true;renderAll();await saveState(true)}
+function go(id,btn){document.querySelectorAll('.page').forEach(p=>p.classList.remove('show'));document.getElementById(id).classList.add('show');document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));btn.classList.add('active')}
+function fmt(n){return Math.floor(n).toLocaleString('en-US')}
+function homeRevenue(){return 250+Math.floor(fans/500)*50}
+function updateStats(){document.getElementById('fans').textContent=fmt(fans);document.getElementById('money').textContent=fmt(money)+' $';document.getElementById('homeIncome').textContent=fmt(homeRevenue())+' $';document.getElementById('teamPower').textContent=(players.slice(0,11).reduce((a,p)=>a+p.power,0)/11).toFixed(1);scheduleSave()}
+function recordResult(win){fans=Math.max(0,fans+(win?50:-20));updateStats()}
+function playHome(){let income=homeRevenue();money+=income;updateStats();alert('درآمد بازی خانگی: '+fmt(income)+' دلار')}
+function renderSquad(){let lines=document.getElementById('formation').value.split('-').map(Number),n=0,html='<div class="pitchline"><div class="player"><b>🧤 '+players[0].name+'</b>'+players[0].power.toFixed(1)+'</div></div>';for(let c of lines){html+='<div class="pitchline">';for(let j=0;j<c;j++){let p=players[(++n)%11];html+=`<div class="player"><b>⚽ ${p.name}</b>${p.power.toFixed(1)}<br>${p.pos}</div>`}html+='</div>'}document.getElementById('pitch').innerHTML=html;document.getElementById('bench').innerHTML=players.slice(11,16).map(p=>`<span class="pill">${p.name} • ${p.power.toFixed(1)}</span>`).join('')}
+const specialNames=['آرکادیوس ونترا','نیکلاس آستریون','لئوناردو وِسپر','کایان دراگون'];
+const specialRoles=['اسطوره','آزاد','رهبر','افسانه'];
+function getSpecial(){const day=Math.floor(Date.now()/86400000),pick=day%specialNames.length;return {name:specialNames[pick],pos:specialRoles[pick],power:200,price:250000,day};}
+function renderSpecial(){const host=document.getElementById('specialPlayer');if(!host)return;const sp=getSpecial();const remain=(Math.floor(Date.now()/86400000)+1)*86400000-Date.now(),hh=Math.floor(remain/3600000),mm=Math.floor(remain%3600000/60000);host.innerHTML=`<div class="special-card"><div class="row"><span class="pill">⭐ بازیکن ویژه ۲۴ ساعته</span><span class="pill">قدرت ۲۰۰</span></div><h3>👑 ${sp.name}</h3><p class="muted">پست ویژه: ${sp.pos} • قیمت ثابت: ۲۵۰٬۰۰۰ دلار</p><div class="row"><b>⏳ تعویض بعد از ${hh} ساعت و ${mm} دقیقه</b><button class="primary" onclick="buySpecial()">خرید بازیکن ویژه</button></div></div>`;}
+function buySpecial(){const p=getSpecial();if(money<p.price)return alert('برای خرید بازیکن ویژه به ۲۵۰٬۰۰۰ دلار نیاز داری.');if(players.length>=25)return alert('فهرست تیم پر است.');money-=p.price;players.push({...p,age:24});renderAll();alert('بازیکن ویژه به باشگاه اضافه شد.');}
+function renderMarket(){renderSpecial();document.getElementById('marketList').innerHTML=market.map((p,i)=>`<div class="row"><span>${p.name} (${p.pos})<br><b>قدرت ${p.power}</b> • ${fmt(p.price)} $</span><button onclick="buy(${i})">خرید</button></div>`).join('');document.getElementById('sellList').innerHTML=players.map((p,i)=>`<div class="row"><span>${p.name} • ${p.power.toFixed(1)}</span><button onclick="sell(${i})">فروش</button></div>`).join('')}
+function buy(i){let p=market[i];if(money<p.price)return alert('بودجه کافی نیست');if(players.length>=25)return alert('فهرست تیم پر است');money-=p.price;players.push({...p,age:22});market.splice(i,1);renderAll()}
+function sell(i){if(players.length<=11)return alert('حداقل ۱۱ بازیکن باید باقی بماند');let p=players.splice(i,1)[0];const gross=Math.max(500,Math.round(p.power*1000));const tax=Math.round(gross*.10);const net=gross-tax;money+=net;renderAll();alert('مبلغ فروش: '+fmt(gross)+' دلار\nمالیات ۱۰٪: '+fmt(tax)+' دلار\nدریافتی خالص: '+fmt(net)+' دلار')}
+function renderTraining(){document.getElementById('trainingPlayers').innerHTML=players.map((p,i)=>`<label class="row"><span>${p.name} — قدرت ${p.power.toFixed(1)}</span><input type="checkbox" value="${i}" style="width:20px"></label>`).join('')}
+function trainSelected(){if(lastTrain&&Date.now()-lastTrain<86400000){document.getElementById('trainStatus').textContent='تمرین روزانه قبلاً انجام شده؛ ۲۴ ساعت بعد دوباره فعال می‌شود.';return}let ids=[...document.querySelectorAll('#trainingPlayers input:checked')].map(x=>+x.value);if(ids.length!==3){alert('دقیقاً ۳ بازیکن را انتخاب کن.');return}ids.forEach(i=>players[i].power=Math.min(99,Math.round((players[i].power+.1)*10)/10));lastTrain=Date.now();document.getElementById('trainStatus').textContent='تمرین انجام شد؛ قدرت هر سه بازیکن ۰٫۱ افزایش یافت.';renderAll()}
+document.getElementById('formation').innerHTML=formations.map(f=>`<option value="${f}">${f}</option>`).join('');
+document.getElementById('formation').value='4-3-3';
+document.getElementById('formation').addEventListener('change',()=>{renderSquad();scheduleSave()});
+function academyAction(){
+ if(!academyRequest){if(money<5000)return alert('بودجه کافی نیست؛ برای درخواست آکادمی ۵٬۰۰۰ دلار نیاز داری.');money-=5000;academyRequest=Date.now();updateStats();renderAcademy();alert('درخواست ثبت شد! دو استعداد پس از ۱۲ ساعت آماده جذب می‌شوند.');return;}
+ const readyAt=academyRequest+12*60*60*1000;if(Date.now()<readyAt)return alert('هنوز زمان آماده‌شدن استعدادها نرسیده است.');
+ const prospects=[{name:'استعداد آکادمی ۱',pos:'MID',power:1+Math.floor(Math.random()*20),age:15},{name:'استعداد آکادمی ۲',pos:'FWD',power:1+Math.floor(Math.random()*20),age:15}];
+ if(players.length+2>25)return alert('فهرست بازیکنان جا ندارد؛ ابتدا جا خالی کن.');players.push(...prospects);academyRequest=0;renderAll();alert('دو استعداد جدید به باشگاه اضافه شدند!');
+}
+function renderAcademy(){const status=document.getElementById('academyStatus'),button=document.getElementById('academyButton');if(!status||!button)return;if(!academyRequest){status.textContent='هنوز درخواستی ثبت نشده است. با پرداخت ۵٬۰۰۰ دلار، زمان‌سنج ۱۲ ساعته شروع می‌شود.';button.textContent='ثبت درخواست استعدادیابی';button.disabled=false;return;}const left=academyRequest+12*60*60*1000-Date.now();if(left<=0){status.textContent='✅ دو استعداد آکادمی آماده جذب هستند.';button.textContent='دریافت دو استعداد';button.disabled=false;}else{const h=Math.floor(left/3600000),m=Math.floor(left%3600000/60000);status.textContent=`⏳ زمان باقی‌مانده: ${h} ساعت و ${m} دقیقه`;button.textContent='در انتظار آماده‌شدن';button.disabled=true;setTimeout(renderAcademy,60000);}}
+function gameSnapshot(){return {teamName,coachName,logoData,players,money,fans,lastTrain,academyRequest,market,formation:document.getElementById('formation')?.value||'4-3-3'};}
+async function saveState(showMessage=false){if(!gameReady||!teamName)return;try{const res=await fetch('/api/state',{method:'POST',headers:{'Content-Type':'application/json','X-Telegram-Init-Data':telegramInitData},body:JSON.stringify(gameSnapshot())});const data=await res.json().catch(()=>({}));if(!res.ok)throw new Error(data.error||'ذخیره‌سازی ناموفق بود');if(showMessage)alert('اطلاعات تیم با موفقیت در سرور ذخیره شد.');}catch(e){console.error(e);if(showMessage)alert('ذخیره در سرور انجام نشد: '+e.message);}}
+function scheduleSave(){if(!gameReady||!teamName)return;clearTimeout(saveTimer);saveTimer=setTimeout(()=>saveState(false),700);}
+function showSavedGame(st){teamName=st.teamName||'';coachName=st.coachName||'';logoData=st.logoData||'';if(Array.isArray(st.players)&&st.players.length)players=st.players;money=Number(st.money??10000);fans=Number(st.fans??0);lastTrain=Number(st.lastTrain||0);academyRequest=Number(st.academyRequest||0);if(Array.isArray(st.market))market=st.market;document.getElementById('formation').value=st.formation||'4-3-3';document.getElementById('onboarding').classList.add('hidden');document.getElementById('game').classList.remove('hidden');document.getElementById('bottomNav').classList.remove('hidden');document.getElementById('headTeam').textContent=teamName;document.getElementById('headCoach').textContent='مربی: '+coachName;document.getElementById('welcomeTeam').textContent=teamName;document.getElementById('welcomeCoach').textContent='سرمربی: '+coachName;if(logoData){document.getElementById('headCrest').innerHTML='<img src="'+logoData+'">';document.getElementById('homeCrest').innerHTML='<img src="'+logoData+'">'}gameReady=true;renderAll();}
+async function initializeGame(){const tg=window.Telegram?.WebApp;if(tg)tg.ready();if(!telegramInitData){document.getElementById('onboarding').classList.remove('hidden');alert('بازی را از داخل تلگرام و دکمه ربات باز کن تا حساب کاربری شناسایی شود.');return;}try{const res=await fetch('/api/state',{headers:{'X-Telegram-Init-Data':telegramInitData}});const data=await res.json();if(!res.ok)throw new Error(data.error||'اتصال به سرور برقرار نشد');if(data.state?.teamName)showSavedGame(data.state);else{gameReady=true;document.getElementById('onboarding').classList.remove('hidden');}}catch(e){console.error(e);alert('اتصال به سرور بازی ناموفق بود: '+e.message);}}
+function renderAll(){updateStats();renderSquad();renderMarket();renderTraining();renderAcademy()}
+const clubs=['پرسپولیس','استقلال','سپاهان','تراکتور','فولاد','گل‌گهر','ذوب‌آهن','ملوان','آلومینیوم','شمس‌آذر'],marks=['P','E','S','T','F','G','Z','M','A','S'];
+// جدول لیگ در showTournament ساخته می‌شود؛ عنصر leagueTable در HTML وجود ندارد.
+const matches=[['لیگ برتر خلیج فارس','پرسپولیس','استقلال'],['لیگ برتر خلیج فارس','سپاهان','تراکتور'],['لیگ برتر خلیج فارس','فولاد','ملوان'],['لیگ برتر خلیج فارس','گل‌گهر','ذوب‌آهن'],['جام حذفی خلیج فارس','استقلال','سپاهان'],['جام باشگاه‌های جهان','رئال مادرید','منچسترسیتی'],['جام آسیا','الهلال','العین']];
+// برنامه مسابقات در renderDailySchedule ساخته می‌شود.
+function toggleMusic(){let a=document.getElementById('music');if(a.paused){a.play().then(()=>document.getElementById('musicBtn').textContent='🎵 روشن').catch(()=>alert('فایل music.mp3 را کنار index.html قرار بده.'))}else{a.pause();document.getElementById('musicBtn').textContent='🎵'}}
+
+// نسخه ۰.۴: تعویض، پست بازیکنان، تورنومنت‌های مجزا و شروع خودکار مسابقه
+const roleForFormation=(formation)=> {
+  const nums=formation.split('-').map(Number);
+  return ['GK',...nums.flatMap((n,i)=>Array(n).fill(i===0?'DEF':i===nums.length-1?'FWD':'MID'))];
+};
+const roleLabel={GK:'دروازه‌بان',DEF:'دفاع',MID:'هافبک',FWD:'حمله'};
+function currentRoles(){return roleForFormation(document.getElementById('formation').value)}
+let selectedPitch=null;
+function renderSquad(){
+ const formation=document.getElementById('formation').value,nums=formation.split('-').map(Number),starters=players.slice(0,11);
+ let html='<div class="pitch-label">دروازه‌بان</div>';
+ const gk=starters[0],gw=gk.pos!=='GK';
+ html+=`<div class="pitchline"><div class="player ${selectedPitch===0?'selected':''}" onclick="selectPitchPlayer(0)" style="${gw?'background:#ffdede;color:#a40000;border-color:#e33':''}"><b>${gk.name}</b>${(gw?gk.power/2:gk.power).toFixed(1)}${gw?' 🔴':''}<br>🧤 دروازه‌بان</div></div>`;
+ let idx=1;
+ nums.forEach((count,lineIndex)=>{
+  const role=lineIndex===0?'DEF':lineIndex===nums.length-1?'FWD':'MID';
+  html+=`<div class="pitch-label">${roleLabel[role]} (${count})</div><div class="pitchline">`;
+  for(let j=0;j<count;j++){const p=starters[idx],wrong=p.pos!==role,eff=wrong?p.power/2:p.power;
+   html+=`<div class="player ${selectedPitch===idx?'selected':''}" onclick="selectPitchPlayer(${idx})" style="${wrong?'background:#ffdede;color:#a40000;border-color:#e33':''}"><b>${p.name}</b>${eff.toFixed(1)}${wrong?' 🔴':''}<br>${roleLabel[role]}</div>`;idx++;}
+  html+='</div>';
+ });
+ html+='<div class="pitch-label">برای جابه‌جایی دو بازیکن، اولی و سپس دومی را لمس کن</div>';
+ document.getElementById('pitch').innerHTML=html;
+ document.getElementById('bench').innerHTML=players.slice(11,16).map(p=>`<span class="pill">${p.name} • ${p.power.toFixed(1)} • ${roleLabel[p.pos]||p.pos}</span>`).join('');
+ const out=document.getElementById('outPlayer'),inn=document.getElementById('inPlayer');
+ if(out&&inn){out.innerHTML=players.slice(0,11).map((p,i)=>`<option value="${i}">${p.name} (${roleLabel[p.pos]||p.pos})</option>`).join('');inn.innerHTML=players.slice(11).map((p,i)=>`<option value="${i+11}">${p.name} (${roleLabel[p.pos]||p.pos})</option>`).join('')}
+}
+function selectPitchPlayer(i){if(selectedPitch===null){selectedPitch=i;renderSquad();return}if(selectedPitch===i){selectedPitch=null;renderSquad();return}[players[selectedPitch],players[i]]=[players[i],players[selectedPitch]];selectedPitch=null;renderAll();}
+function makeSubstitution(){const a=Number(document.getElementById('outPlayer').value),b=Number(document.getElementById('inPlayer').value);if(!(a>=0&&a<11&&b>=11&&b<players.length)){alert('دو بازیکن را انتخاب کن.');return}[players[a],players[b]]=[players[b],players[a]];selectedPitch=null;renderAll();alert('تعویض انجام شد.');}
+const tournamentTeams={
+'لیگ برتر خلیج فارس':['پرسپولیس','استقلال','سپاهان','تراکتور','فولاد','گل‌گهر','ذوب‌آهن','ملوان','آلومینیوم','شمس‌آذر'],
+'جام حذفی خلیج فارس':['پرسپولیس','استقلال','سپاهان','تراکتور','فولاد','ملوان','نساجی','مس رفسنجان'],
+'جام باشگاه‌های جهان':['رئال مادرید','منچسترسیتی','بایرن مونیخ','پاری‌سن‌ژرمن','فلامینگو','الهلال','الاهلی','اینتر میامی'],
+'جام آسیا':['الهلال','العین','السد','اولسان','پرسپولیس','استقلال','یوکوهاما مارینوس','الاتحاد']
+};
+const clubMarks={'پرسپولیس':'P','استقلال':'E','سپاهان':'S','تراکتور':'T','فولاد':'F','گل‌گهر':'G','ذوب‌آهن':'Z','ملوان':'M','آلومینیوم':'A','شمس‌آذر':'ش','رئال مادرید':'RM','منچسترسیتی':'MC','بایرن مونیخ':'BM','پاری‌سن‌ژرمن':'PSG','فلامینگو':'F','الهلال':'H','الاهلی':'Ah','اینتر میامی':'IM','العین':'A','السد':'S','اولسان':'U','یوکوهاما مارینوس':'Y','الاتحاد':'I'};
+const clubColors={'پرسپولیس':'#c62828','استقلال':'#1766bd','سپاهان':'#d69b20','تراکتور':'#c62828','فولاد':'#477a9c','گل‌گهر':'#286a9d','ذوب‌آهن':'#27784b','ملوان':'#e8edf2','آلومینیوم':'#8c929a','شمس‌آذر':'#1c8a69','رئال مادرید':'#e9e9e9','منچسترسیتی':'#68bde0','بایرن مونیخ':'#c72c37','پاری‌سن‌ژرمن':'#193a76','فلامینگو':'#c72b32','الهلال':'#1c79c5','الاهلی':'#267c53','اینتر میامی':'#ed9ab7','العین':'#633aa0','السد':'#eee','اولسان':'#2374bd','یوکوهاما مارینوس':'#2588c9','الاتحاد':'#e7b62f'};
+function teamBadge(name){const mark=clubMarks[name]||name.slice(0,2);return `<span class="teamlogo" title="${name}" style="background:linear-gradient(145deg,${clubColors[name]||'#527b82'},#10242e)"><i>${mark}</i></span>`}
+function showTournament(name){
+  document.getElementById('tournamentTitle').textContent=name;
+  const ts=tournamentTeams[name]||tournamentTeams['لیگ برتر خلیج فارس'];
+  const rows=ts.map((t,i)=>`<tr><td>${i+1}</td><td>${teamBadge(t)} ${t}</td><td>۰</td><td>۰</td></tr>`).join('');
+  document.getElementById('leagueDetail').innerHTML=
+  `<p class="muted">🏁 فصل جدید • هفته اول • هنوز هیچ مسابقه‌ای برگزار نشده است</p><table><tr><th>رتبه</th><th>تیم</th><th>بازی</th><th>امتیاز</th></tr>${rows}</table>`;
+}
+const dailySlots=['09:00','11:00','13:00','15:00','17:00','19:00','22:30'];
+const dailyKinds=['لیگ برتر خلیج فارس','لیگ برتر خلیج فارس','لیگ برتر خلیج فارس','لیگ برتر خلیج فارس','جام حذفی خلیج فارس','جام باشگاه‌های جهان','جام آسیا'];
+function renderDailySchedule(){
+  const host=document.getElementById('fixtureList');
+  host.innerHTML=dailySlots.map((time,i)=>`<div class="row"><span class="pill">${time}</span><span style="flex:1"><b>${dailyKinds[i]}</b><br><small class="muted">${teamName||'تیم شما'} مقابل ${['استقلال','سپاهان','تراکتور','فولاد','الهلال','رئال مادرید','العین'][i]}</small></span><button onclick="startMatch(${i})">نمایش بازی</button></div>`).join('');
+}
+let activeMatchTimer=null;
+function startMatch(index){
+  if(!Number.isInteger(index)||index<0||index>=dailySlots.length)return;
+  if(document.getElementById('matchOverlay'))document.getElementById('matchOverlay').remove();
+  const opponent=['استقلال','سپاهان','تراکتور','فولاد','الهلال','رئال مادرید','العین'][index];
+  const overlay=document.createElement('div');overlay.id='matchOverlay';
+  overlay.style='position:fixed;inset:0;z-index:30;background:#06130ff5;display:grid;place-items:center;padding:18px';
+  overlay.innerHTML=`<div class="card" style="width:min(560px,100%);text-align:center">
+    <div class="pill">${dailyKinds[index]}</div><h2 style="margin-top:14px">⚽ مسابقه در حال برگزاری</h2>
+    <div class="row" style="justify-content:center;font-size:20px"><b>${teamName}</b><span class="crest-sm">⚔</span><b>${opponent}</b></div>
+    <div class="stat" id="matchScore">۰ - ۰</div><p id="matchMinute" class="gold">دقیقه ۰</p>
+    <p id="matchComment" class="muted">بازیکنان وارد زمین شدند...</p>
+    <button onclick="closeMatch()">بستن گزارش بازی</button>
+  </div>`;
+  document.body.appendChild(overlay);
+  let minute=0,home=0,away=0;
+  if(activeMatchTimer)clearInterval(activeMatchTimer);
+  activeMatchTimer=setInterval(()=>{
+    minute+=5;
+    if(Math.random()<.12)home++;
+    if(Math.random()<.10)away++;
+    const fa=n=>String(n).replace(/[0-9]/g,d=>'۰۱۲۳۴۵۶۷۸۹'[+d]);
+    document.getElementById('matchScore').textContent=fa(home)+' - '+fa(away);
+    document.getElementById('matchMinute').textContent='دقیقه '+fa(Math.min(minute,90));
+    document.getElementById('matchComment').textContent=minute>=90?'سوت پایان مسابقه به صدا درآمد.':(['حمله سریع از سمت راست!','تیم شما مالکیت توپ را در اختیار دارد.','یک موقعیت خطرناک روی دروازه!','بازی در میانه میدان دنبال می‌شود.'][Math.floor(Math.random()*4)]);
+    if(minute>=90){clearInterval(activeMatchTimer);activeMatchTimer=null;}
+  },900);
+}
+function closeMatch(){if(activeMatchTimer){clearInterval(activeMatchTimer);activeMatchTimer=null}const el=document.getElementById('matchOverlay');if(el)el.remove()}
+function checkAutomaticMatch(){
+  if(!teamName)return;
+  const now=new Date(),key=now.toISOString().slice(0,10),slot=dailySlots.findIndex(t=>t===String(now.getHours()).padStart(2,'0')+':'+String(now.getMinutes()).padStart(2,'0'));
+  if(slot>=0&&window._lastAutoMatch!==key+'-'+slot){window._lastAutoMatch=key+'-'+slot;startMatch(slot)}
+}
+initializeGame();
+showTournament('لیگ برتر خلیج فارس');
+renderDailySchedule();
+setInterval(checkAutomaticMatch,15000);
+
+</script></body></html>
