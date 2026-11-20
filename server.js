@@ -15,9 +15,10 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SEC
 });
 const app = express();
 app.use(express.json({ limit: '2mb' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 });
 function verifyTelegram(initData) {
   if (!initData || typeof initData !== 'string' || initData.length > 10000) throw new Error('اطلاعات ورود تلگرام دریافت نشد. بازی را از داخل ربات باز کن.');
