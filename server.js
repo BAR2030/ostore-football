@@ -19,7 +19,6 @@ app.use(express.static(__dirname));
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
-});
 function verifyTelegram(initData) {
   if (!initData || typeof initData !== 'string' || initData.length > 10000) throw new Error('اطلاعات ورود تلگرام دریافت نشد. بازی را از داخل ربات باز کن.');
   const params = new URLSearchParams(initData);
